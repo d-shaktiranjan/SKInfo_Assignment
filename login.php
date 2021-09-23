@@ -1,8 +1,8 @@
 <?php
 
 session_start();
-if($_SESSION['loggedin']){
-  header("location: afterLog.html");
+if(isset($_SESSION['mail'])){
+  header("location: afterLog.php");
 }
 
 if ($_SERVER["REQUEST_METHOD"]=="POST"){
