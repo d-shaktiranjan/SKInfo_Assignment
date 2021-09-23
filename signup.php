@@ -1,5 +1,10 @@
 <?php
 
+session_start();
+if($_SESSION['loggedin']){
+  header("location: afterLog.html");
+}
+
 if($_SERVER["REQUEST_METHOD"]=="POST"){
     include 'parts/dbConnect.php';
     $name=$_POST["userName"];
