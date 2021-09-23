@@ -1,3 +1,19 @@
+<?php
+
+if($_SERVER["REQUEST_METHOD"]=="POST"){
+    include 'parts/dbConnect.php';
+    $name=$_POST["userName"];
+    $mail=$_POST["userMail"];
+    $mobile=$_POST["mobile"];
+    $password=$_POST["password"];
+    $conPass=$_POST["conPassword"];
+    if($password==$conPass){
+        echo("Pass & Con Pass Match");
+    } else{
+        echo ("Pass not Match");
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,12 +28,12 @@
     <div class="container">
         <h2>Signup Here</h2>
         <hr>
-        <form action="">
+        <form action="/skinfo/signup.php" method="POST">
             <input type="text" name="userName" id="userName" placeholder="Shakti Ranjan Debata"> <br>
             <input type="email" name="userMail" id="userMail" placeholder="example@mail.com"> <br>
             <input type="number" name="mobile" id="mobile"> <br>
             <input type="password" name="password" id="password" required> <br>
-            <input type="conPassword" name="password" id="conPassword" required> <br>
+            <input type="password" name="conPassword" id="conPassword" required> <br>
             <div class="form-check">
                 <h4>Select your hobbies</h4>
                 <input type="checkbox" id="reading" name="hobbies[]" value="reading">
