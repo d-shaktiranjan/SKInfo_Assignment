@@ -1,3 +1,30 @@
+<?php
+
+if ($_SERVER["REQUEST_METHOD"]=="POST"){
+    include 'parts/dbConnect.php';
+    $mail=$_POST["email"];
+    $password=$_POST["password"];
+
+    $sql="SELECT * FROM `userdata` WHERE mail='$mail'";
+    $result=mysqli_query($conn,$sql);
+    $num=mysqli_num_rows($result);
+    if ($num>=1){
+        while($row=mysqli_fetch_assoc($result)){
+          if($row['password']==$password){
+            $login=true;
+            session_start();
+            $_SESSION['loggedin']=true;
+            $_SESSION['username']=$username;
+            
+            header("location: afterLog.html");
+            }
+        }
+    }
+
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +41,7 @@
     <div class="container">
         <h2>Login Here</h2>
         <hr>
-        <form>
+        <form method="POST" action="/skinfo/login.php">
             <div class="mb-3">
                 <label for="email" class="form-label">Email address</label>
                 <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
