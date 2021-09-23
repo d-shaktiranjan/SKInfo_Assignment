@@ -44,6 +44,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 </head>
 
 <body>
+    <?php include 'parts/navbar.php'?>
     <div class="container">
         <h2>Signup Here</h2>
         <hr>

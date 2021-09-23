@@ -20,6 +20,7 @@ if(!$_SESSION['loggedin']){
 </head>
 
 <body>
+    <?php include 'parts/navbar.php'?>
     <div class="container">
         <h1>You are loggedin!</h1>
     </div>

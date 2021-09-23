@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
             $_SESSION['loggedin']=true;
             $_SESSION['mail']=$mail;
             
-            header("location: afterLog.html");
+            header("location: afterLog.php");
             }
         }
     }
@@ -43,6 +43,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
 </head>
 
 <body>
+    <?php include 'parts/navbar.php'?>
     <div class="container">
         <h2>Login Here</h2>
         <hr>
