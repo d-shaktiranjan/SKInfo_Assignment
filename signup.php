@@ -8,10 +8,12 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $password=$_POST["password"];
     $conPass=$_POST["conPassword"];
     $hobbies=$_POST["hobbies"];
+    $gender=$_POST["gender"];
+    echo $gender;
     $strFormHobbies=serialize($hobbies);
     if($password==$conPass){
-        $sql="INSERT INTO `userdata` (`name`, `mail`, `mobile`, `password`, `hobbies`, `dateOfJoin`) 
-        VALUES ('$name', '$mail', '$mobile', '$password', '$strFormHobbies', current_timestamp())";
+        $sql="INSERT INTO `userdata` (`name`, `mail`,`gender`, `mobile`, `password`, `hobbies`, `dateOfJoin`) 
+        VALUES ('$name', '$mail','$gender', '$mobile', '$password', '$strFormHobbies', current_timestamp())";
         $res=mysqli_query($conn,$sql);
         if($res){
             echo ("Added");
@@ -78,12 +80,34 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                 <input type="checkbox" id="somethingElse" name="hobbies[]" value="somethingElse">
                 <label for="somethingElse"> Something Else</label><br>
             </div>
+            <div class="radio">
+                <h4>Select Gender</h4>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" value="male" id="flexRadioDefault1"
+                        required>
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        Male
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" value="female" id="flexRadioDefault2">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        Female
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" value="others" id="flexRadioDefault3">
+                    <label class="form-check-label" for="flexRadioDefault3">
+                        Others
+                    </label>
+                </div>
+            </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
-    </script>
+</script>
 
 </html>
