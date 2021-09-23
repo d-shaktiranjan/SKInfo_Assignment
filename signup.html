@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Signup Here</h2>
+        <hr>
+        <form action="">
+            <input type="text" name="userName" id="userName" placeholder="Shakti Ranjan Debata"> <br>
+            <input type="email" name="userMail" id="userMail" placeholder="example@mail.com"> <br>
+            <input type="number" name="mobile" id="mobile"> <br>
+            <input type="password" name="password" id="password" required> <br>
+            <input type="conPassword" name="password" id="conPassword" required> <br>
+            <div class="form-check">
+                <h4>Select your hobbies</h4>
+                <input type="checkbox" id="reading" name="hobbies[]" value="reading">
+                <label for="reading"> Reading</label><br>
+                <input type="checkbox" id="photography" name="hobbies[]" value="photography">
+                <label for="photography">Photography</label><br>
+                <input type="checkbox" id="outdoorGame" name="hobbies[]" value="outdoorGame">
+                <label for="outdoorGame">Outdoor Game</label><br>
+                <input type="checkbox" id="artCraft" name="hobbies[]" value="artCraft">
+                <label for="artCraft"> Art & Craft</label><br>
+                <input type="checkbox" id="podcast" name="hobbies[]" value="podcast">
+                <label for="podcast"> PodCast</label><br>
+                <input type="checkbox" id="somethingElse" name="hobbies[]" value="somethingElse">
+                <label for="somethingElse"> Something Else</label><br>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+
+</html>
