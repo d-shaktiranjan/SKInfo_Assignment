@@ -7,8 +7,18 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $mobile=$_POST["mobile"];
     $password=$_POST["password"];
     $conPass=$_POST["conPassword"];
+    $hobbies=$_POST["hobbies"];
+    $strFormHobbies=serialize($hobbies);
     if($password==$conPass){
-        echo("Pass & Con Pass Match");
+        $sql="INSERT INTO `userdata` (`name`, `mail`, `mobile`, `password`, `hobbies`, `dateOfJoin`) 
+        VALUES ('$name', '$mail', '$mobile', '$password', '$strFormHobbies', current_timestamp())";
+        $res=mysqli_query($conn,$sql);
+        if($res){
+            echo ("Added");
+        } else{
+            echo ("Error");
+        }
+        echo ("Pass Match");
     } else{
         echo ("Pass not Match");
     }
