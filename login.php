@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
             $login=true;
             session_start();
             $_SESSION['loggedin']=true;
-            $_SESSION['username']=$username;
+            $_SESSION['mail']=$mail;
             
             header("location: afterLog.html");
             }
