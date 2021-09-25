@@ -31,12 +31,18 @@ $hobbies=unserialize($row["hobbies"]);
         <h2>You are loggedin!</h2>
         <hr>
         <h3>Name:-<?php echo $row["name"]?></h3>
-        <h3>Gender:- <?php echo $row["gender"]?></h3>
+        <h3>Gender:- <?php echo ucwords($row["gender"])?></h3>
         <h3>Mail:- <?php echo $userMail?></h3>
         <h3>Mobile:- <?php echo $row["mobile"]?></h3>
         <h3>Hobbies:- <?php
+        $slNo=0;
         foreach($hobbies as $item){
-            echo $item;
+            if($slNo==0){
+                echo ucwords($item);
+            } else{
+                echo ', '.ucwords($item);
+            }
+            $slNo++;
         }
         ?></h3>
         <h3>Date & time of join:- <?php echo $row["dateOfJoin"]?></h3>
