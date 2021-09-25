@@ -5,6 +5,12 @@ if(!$_SESSION['loggedin']){
   header("location: login.php");
 }
 
+include 'parts/dbConnect.php';
+$userMail=$_SESSION["mail"];
+$sql="SELECT * FROM `userdata` WHERE mail='$userMail'";
+$result=mysqli_query($conn,$sql);
+$row=mysqli_fetch_assoc($result);
+$hobbies=unserialize($row["hobbies"]);
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +28,18 @@ if(!$_SESSION['loggedin']){
 <body>
     <?php include 'parts/navbar.php'?>
     <div class="container">
-        <h1>You are loggedin!</h1>
+        <h2>You are loggedin!</h2>
+        <hr>
+        <h3>Name:-<?php echo $row["name"]?></h3>
+        <h3>Gender:- <?php echo $row["gender"]?></h3>
+        <h3>Mail:- <?php echo $userMail?></h3>
+        <h3>Mobile:- <?php echo $row["mobile"]?></h3>
+        <h3>Hobbies:- <?php
+        foreach($hobbies as $item){
+            echo $item;
+        }
+        ?></h3>
+        <h3>Date & time of join:- <?php echo $row["dateOfJoin"]?></h3>
     </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
