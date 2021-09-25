@@ -111,6 +111,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
+        <div class="d-grid gap-2 col-6 mx-auto my-3">
+            <a href="/skinfo/login.php" class="btn btn-outline-success">Already have an account?</a>
+        </div>
     </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
