@@ -2,7 +2,7 @@
 
 session_start();
 if(isset($_SESSION['mail'])){
-  header("location: afterLog.php");
+  header("location: index.php");
 }
 
 if ($_SERVER["REQUEST_METHOD"]=="POST"){
@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
             $_SESSION['loggedin']=true;
             $_SESSION['mail']=$mail;
             
-            header("location: afterLog.php");
+            header("location: login.php");
             }
         }
     }

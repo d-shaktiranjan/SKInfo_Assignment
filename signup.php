@@ -2,7 +2,7 @@
 
 session_start();
 if(isset($_SESSION['mail'])){
-  header("location: afterLog.php");
+  header("location: index.php");
 }
 
 if($_SERVER["REQUEST_METHOD"]=="POST"){
