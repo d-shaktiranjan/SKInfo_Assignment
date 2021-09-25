@@ -17,8 +17,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     echo $gender;
     $strFormHobbies=serialize($hobbies);
     if($password==$conPass){
+        $hashPass=password_hash($password,PASSWORD_DEFAULT);
         $sql="INSERT INTO `userdata` (`name`, `mail`,`gender`, `mobile`, `password`, `hobbies`, `dateOfJoin`) 
-        VALUES ('$name', '$mail','$gender', '$mobile', '$password', '$strFormHobbies', current_timestamp())";
+        VALUES ('$name', '$mail','$gender', '$mobile', '$hashPass', '$strFormHobbies', current_timestamp())";
         $res=mysqli_query($conn,$sql);
         if($res){
             echo ("Added");
