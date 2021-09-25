@@ -1,5 +1,9 @@
 <?php
 
+$passNotMatch=false;
+$accountAdded=false;
+$accountNotAdded=false;
+
 session_start();
 if(isset($_SESSION['mail'])){
   header("location: index.php");
@@ -14,7 +18,6 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $conPass=$_POST["conPassword"];
     $hobbies=$_POST["hobbies"];
     $gender=$_POST["gender"];
-    echo $gender;
     $strFormHobbies=serialize($hobbies);
     if($password==$conPass){
         $hashPass=password_hash($password,PASSWORD_DEFAULT);
@@ -22,13 +25,12 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         VALUES ('$name', '$mail','$gender', '$mobile', '$hashPass', '$strFormHobbies', current_timestamp())";
         $res=mysqli_query($conn,$sql);
         if($res){
-            echo ("Added");
+            $accountAdded=true;
         } else{
-            echo ("Error");
+            $accountNotAdded=true;
         }
-        echo ("Pass Match");
     } else{
-        echo ("Pass not Match");
+        $passNotMatch=true;
     }
 }
 ?>
@@ -47,6 +49,18 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 <body>
     <?php include 'parts/navbar.php'?>
     <div class="container">
+        <?php
+        require 'parts/alertFun.php';
+        if($passNotMatch){
+            showAlert(false,"Error","Password & Confirm password not matched");
+        }
+        if($accountAdded){
+            showAlert(true,"success","Account created. Now you can login");
+        }
+        if($accountNotAdded){
+            showAlert(false,"Error","Mail already registered");
+        }
+        ?>
         <h2>Signup Here</h2>
         <hr>
         <form action="/skinfo/signup.php" method="POST">
