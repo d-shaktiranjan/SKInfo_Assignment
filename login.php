@@ -1,5 +1,8 @@
 <?php
 
+$passNotMatch=false;
+$mailNotFound=false;
+
 session_start();
 if(isset($_SESSION['mail'])){
   header("location: index.php");
@@ -22,8 +25,12 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
             $_SESSION['mail']=$mail;
             
             header("location: login.php");
+            } else{
+                $passNotMatch=true;
             }
         }
+    } else{
+        $mailNotFound=true;
     }
 
 }
@@ -45,16 +52,26 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
 <body>
     <?php include 'parts/navbar.php'?>
     <div class="container">
+        <?php
+        if($passNotMatch){
+        require 'parts/alertFun.php';
+        showAlert(false,"Error","Password Not Matched");
+        }
+        if($mailNotFound){
+        require 'parts/alertFun.php';
+        showAlert(false,"Error","Create an account to login");
+        }
+        ?>
         <h2>Login Here</h2>
         <hr>
         <form method="POST" action="/skinfo/login.php">
             <div class="mb-3">
                 <label for="email" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
+                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" required>
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="password">
+                <input type="password" class="form-control" id="password" name="password" required>
             </div>
             <button type="submit" class="btn btn-primary">Login</button>
         </form>
