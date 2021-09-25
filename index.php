@@ -46,6 +46,10 @@ $hobbies=unserialize($row["hobbies"]);
         }
         ?></h3>
         <h3>Date & time of join:- <?php echo $row["dateOfJoin"]?></h3>
+        <hr>
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <a href="/skinfo/logout.php" class="btn btn-danger" type="button">Logout</a>
+        </div>
     </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
